@@ -14,3 +14,8 @@ through a Load Balancer and catch logs via EFK stack;
 The entire process should be as automated as possible and all services should be raised by one command only.
 
 My tf config actually corresponds not to all conditions. It sets up the EKS cluster with Apache server and exposes it through the LoadBalancer.Also it sets up Elasticsearch cluster using AWS Elasticsearch service(elasticsearch domain resource in terraform). However, the main obstacle for me was to connect EKS cluster with  ES domain. I've tried to set up a fluentd on EKS cluster(using daemon set) but it doesn't work properly. Maybe, problem is in k8 manifest, but I haven't got much time to fix this issue now.
+
+This config will create ~50 recources requires for EKS and ES service such as vpc, subnets, security groups, load balancer.
+Also it provides output with Load Balancer DNS, k8 config, ES servivce DNS.
+
+Config creates EKS cluster with Apache server in pods and expose through the Load Balancer.LB link provides in output.
